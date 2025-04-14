@@ -2,6 +2,8 @@ package com.sidneibecker.movies.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,21 +14,14 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Movie {
+public class Studio {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
 	private Long id;
 
-	private Long releaseYear;
+	private String name;
 
-	private String title;
-
-	private Boolean winner;
-
-	@OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
-	private List<MovieProducer> movieProducers;
-
-	@OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "studio", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<MovieStudio> movieStudios;
 }
