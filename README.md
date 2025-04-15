@@ -1,11 +1,7 @@
 # java-movies
 
-A project that list the Golden Raspberry Awards movies, using a .csv file. It persist and get all data in a H2 database.
-
-## Requirements
-
-- `Java JDK 21`
-- `Maven 3.9.2`
+A project that list the Golden Raspberry Awards movies, using a .csv file.
+Developed with `Spring Boot` and `Java 21`. It persist and get all data in a `H2` database.
 
 ## CSV Location
 
@@ -18,8 +14,8 @@ A project that list the Golden Raspberry Awards movies, using a .csv file. It pe
 
 ## Endpoints
 
-- `GET /movies`
-- `GET /producers/min-max-interval`
+- `GET http://localhost:8080/movies`
+- `GET http://localhost:8080/producers/min-max-interval`
 
 ## Swagger
 
