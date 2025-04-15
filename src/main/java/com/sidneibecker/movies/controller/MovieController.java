@@ -12,7 +12,7 @@ import com.sidneibecker.movies.model.Movie;
 @RequestMapping("/movies")
 public interface MovieController {
 
-	@GetMapping({ "", "/" })
+	@GetMapping()
 	public List<Movie> getAll();
 
 }

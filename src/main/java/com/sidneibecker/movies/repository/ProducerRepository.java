@@ -9,5 +9,7 @@ import com.sidneibecker.movies.model.Producer;
 
 @Repository
 public interface ProducerRepository extends JpaRepository<Producer, Long> {
+
 	Optional<Producer> findByName(String name);
+
 }

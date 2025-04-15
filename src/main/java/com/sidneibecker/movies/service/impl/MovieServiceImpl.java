@@ -18,7 +18,6 @@ import com.sidneibecker.movies.repository.ProducerRepository;
 import com.sidneibecker.movies.repository.StudioRepository;
 import com.sidneibecker.movies.service.MovieService;
 
-import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -34,12 +33,8 @@ public class MovieServiceImpl implements MovieService {
 	@Autowired
 	StudioRepository studioRepository;
 
-	@PostConstruct
-	public void init() {
-		this.saveCsvToDatabase();
-	}
-
-	private void saveCsvToDatabase() {
+	@Override
+	public void saveCsvToDatabase() {
 		try (BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/movies.csv")))) {
 
 			reader.readLine(); // Skip header
@@ -51,7 +46,7 @@ public class MovieServiceImpl implements MovieService {
 
 				// Create a new movie model
 				Movie movie = new Movie();
-				movie.setReleaseYear(Long.valueOf(fields[0]));
+				movie.setYear(Long.valueOf(fields[0]));
 				movie.setTitle(fields[1]);
 
 				// Create Studios relation
@@ -85,7 +80,13 @@ public class MovieServiceImpl implements MovieService {
 
 				List<MovieProducer> movieProducers = new ArrayList<>();
 
-				for (String producerName : producerNames.split(",")) {
+				for (String producerName : producerNames.split(",| and ")) {
+
+					producerName = producerName.trim();
+
+					if (producerName.length() == 0) {
+						continue;
+					}
 
 					// Search for an already saved producer record
 					Producer producer = producerRepository.findByName(producerName).orElse(new Producer());
@@ -124,4 +125,5 @@ public class MovieServiceImpl implements MovieService {
 	public List<Movie> getAllMovies() {
 		return movieRepository.findAll();
 	}
+
 }

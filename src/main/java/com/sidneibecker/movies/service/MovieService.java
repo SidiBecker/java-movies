@@ -8,4 +8,6 @@ public interface MovieService {
 
 	public List<Movie> getAllMovies();
 
+	void saveCsvToDatabase();
+
 }
