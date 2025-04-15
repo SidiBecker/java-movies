@@ -8,9 +8,12 @@ import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import com.sidneibecker.movies.dto.MinMaxProducerIntervalDTO;
 import com.sidneibecker.movies.dto.ProducerIntervalDTO;
@@ -18,6 +21,8 @@ import com.sidneibecker.movies.repository.ProducerRepository;
 import com.sidneibecker.movies.repository.ProducerRepositoryCustom;
 import com.sidneibecker.movies.service.impl.ProducerServiceImpl;
 
+@SpringBootTest
+@ExtendWith(MockitoExtension.class)
 public class ProducerServiceImplTest {
 
 	@Mock
