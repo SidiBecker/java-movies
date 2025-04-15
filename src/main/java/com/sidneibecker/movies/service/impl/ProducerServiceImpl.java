@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.sidneibecker.movies.dto.MinMaxProducerIntervalDTO;
 import com.sidneibecker.movies.dto.ProducerIntervalDTO;
-import com.sidneibecker.movies.model.Producer;
 import com.sidneibecker.movies.repository.ProducerRepository;
 import com.sidneibecker.movies.repository.ProducerRepositoryCustom;
 import com.sidneibecker.movies.service.ProducerService;
@@ -24,11 +23,6 @@ public class ProducerServiceImpl implements ProducerService {
 
 	@Autowired
 	ProducerRepository producerRepository;
-
-	@Override
-	public List<Producer> getAll() {
-		return producerRepository.findAll();
-	}
 
 	@Override
 	public MinMaxProducerIntervalDTO getMinMaxInterval() {

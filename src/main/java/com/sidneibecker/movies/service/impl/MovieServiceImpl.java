@@ -4,10 +4,13 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sidneibecker.movies.dto.MovieDTO;
+import com.sidneibecker.movies.mapper.MovieMapper;
 import com.sidneibecker.movies.model.Movie;
 import com.sidneibecker.movies.model.MovieProducer;
 import com.sidneibecker.movies.model.MovieStudio;
@@ -32,6 +35,9 @@ public class MovieServiceImpl implements MovieService {
 
 	@Autowired
 	StudioRepository studioRepository;
+
+	@Autowired
+	MovieMapper movieMapper;
 
 	@Override
 	public void saveCsvToDatabase() {
@@ -122,8 +128,22 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
-	public List<Movie> getAllMovies() {
-		return movieRepository.findAll();
+	public List<MovieDTO> getAll() {
+
+		List<Movie> movies = movieRepository.findAll();
+
+		List<MovieDTO> movieDTOs = new ArrayList<>();
+
+		for (Movie movie : movies) {
+
+			MovieDTO movieDTO = movieMapper.toDTO(movie);
+			movieDTO.setProducers(movie.getMovieProducers().stream().map(x -> x.getProducer().getName()).collect(Collectors.toList()));
+			movieDTO.setStudios(movie.getMovieStudios().stream().map(x -> x.getStudio().getName()).collect(Collectors.toList()));
+
+			movieDTOs.add(movieDTO);
+		}
+
+		return movieDTOs;
 	}
 
 }
