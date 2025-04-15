@@ -15,6 +15,6 @@ public class StartupService {
 
 	@PostConstruct
 	public void onStartup() {
-		movieService.saveCsvToDatabase();
+		movieService.saveCsvToDatabase(null);
 	}
 }

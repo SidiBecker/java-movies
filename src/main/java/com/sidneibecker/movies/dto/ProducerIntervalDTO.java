@@ -9,6 +9,9 @@ public class ProducerIntervalDTO {
 	private Long previousWin;
 	private Long followingWin;
 
+	public ProducerIntervalDTO() {
+	}
+
 	public ProducerIntervalDTO(String producer, Long interval, Long previousWin, Long followingWin) {
 		super();
 		this.producer = producer;

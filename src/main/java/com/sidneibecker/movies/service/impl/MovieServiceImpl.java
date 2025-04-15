@@ -1,6 +1,7 @@
 package com.sidneibecker.movies.service.impl;
 
 import java.io.BufferedReader;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,8 +41,13 @@ public class MovieServiceImpl implements MovieService {
 	MovieMapper movieMapper;
 
 	@Override
-	public void saveCsvToDatabase() {
-		try (BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/movies.csv")))) {
+	public void saveCsvToDatabase(InputStream inputStream) {
+
+		if (inputStream == null) {
+			inputStream = getClass().getResourceAsStream("/movies.csv");
+		}
+
+		try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
 
 			reader.readLine(); // Skip header
 
