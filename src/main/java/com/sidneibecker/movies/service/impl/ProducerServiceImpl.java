@@ -12,10 +12,7 @@ import com.sidneibecker.movies.repository.ProducerRepository;
 import com.sidneibecker.movies.repository.ProducerRepositoryCustom;
 import com.sidneibecker.movies.service.ProducerService;
 
-import lombok.RequiredArgsConstructor;
-
 @Service
-@RequiredArgsConstructor
 public class ProducerServiceImpl implements ProducerService {
 
 	@Autowired

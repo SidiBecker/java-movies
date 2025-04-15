@@ -22,10 +22,7 @@ import com.sidneibecker.movies.repository.ProducerRepository;
 import com.sidneibecker.movies.repository.StudioRepository;
 import com.sidneibecker.movies.service.MovieService;
 
-import lombok.RequiredArgsConstructor;
-
 @Service
-@RequiredArgsConstructor
 public class MovieServiceImpl implements MovieService {
 
 	@Autowired

@@ -9,8 +9,7 @@ Developed with `Spring Boot` and `Java 21`. It persist and get all data in a `H2
 
 ## How to start a development server
 
-- `mvn install`
-- `mvn spring-boot:run`
+- `mvn clean install spring-boot:run`
 
 ## Endpoints
 

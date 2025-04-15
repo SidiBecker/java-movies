@@ -10,10 +10,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.Data;
 
 @Entity
-@Data
 @Table(name = "tb_movie")
 public class Movie {
 
@@ -37,4 +35,54 @@ public class Movie {
 
 	@OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
 	private List<MovieStudio> movieStudios;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getYear() {
+		return year;
+	}
+
+	public void setYear(Long year) {
+		this.year = year;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public Boolean getWinner() {
+		return winner;
+	}
+
+	public void setWinner(Boolean winner) {
+		this.winner = winner;
+	}
+
+	public List<MovieProducer> getMovieProducers() {
+		return movieProducers;
+	}
+
+	public void setMovieProducers(List<MovieProducer> movieProducers) {
+		this.movieProducers = movieProducers;
+	}
+
+	public List<MovieStudio> getMovieStudios() {
+		return movieStudios;
+	}
+
+	public void setMovieStudios(List<MovieStudio> movieStudios) {
+		this.movieStudios = movieStudios;
+	}
+	
+	
 }
